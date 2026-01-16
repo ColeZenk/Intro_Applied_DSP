@@ -1,0 +1,291 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/src/ADC.o
+ .data          0x00000000        0x0 build/src/ADC.o
+ .bss           0x00000000        0x0 build/src/ADC.o
+ .text          0x00000000        0x0 build/src/DAC.o
+ .data          0x00000000        0x0 build/src/DAC.o
+ .bss           0x00000000        0x0 build/src/DAC.o
+ .text          0x00000000        0x0 build/src/main.o
+ .data          0x00000000        0x0 build/src/main.o
+ .bss           0x00000000        0x0 build/src/main.o
+ .bss.adc_measurement
+                0x00000000        0x2 build/src/main.o
+ .text          0x00000000        0x0 build/src/MCG.o
+ .data          0x00000000        0x0 build/src/MCG.o
+ .bss           0x00000000        0x0 build/src/MCG.o
+ .text          0x00000000        0x0 build/src/TimerInt.o
+ .data          0x00000000        0x0 build/src/TimerInt.o
+ .bss           0x00000000        0x0 build/src/TimerInt.o
+ .text          0x00000000        0x0 build/src/uart.o
+ .data          0x00000000        0x0 build/src/uart.o
+ .bss           0x00000000        0x0 build/src/uart.o
+ .text.UART0_PutChar
+                0x00000000       0x10 build/src/uart.o
+ .text          0x00000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+ .data          0x00000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+ .bss           0x00000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+ .text.SystemCoreClockUpdate
+                0x00000000      0x174 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+ .data.SystemCoreClock
+                0x00000000        0x4 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+ .text          0x00000000        0x0 build/startup.o
+ .data          0x00000000        0x0 build/startup.o
+ .bss           0x00000000        0x0 build/startup.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x00000000         0x00080000         xr
+RAM              0x1fff0000         0x00020000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/src/ADC.o
+LOAD build/src/DAC.o
+LOAD build/src/main.o
+LOAD build/src/MCG.o
+LOAD build/src/TimerInt.o
+LOAD build/src/uart.o
+LOAD build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+LOAD build/startup.o
+START GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.0/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a
+END GROUP
+START GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.0/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libnosys.a
+END GROUP
+START GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.0/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libnosys.a
+END GROUP
+                0x20010000                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x00000000      0x168
+                0x00000000                        . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x00000000      0x168 build/startup.o
+                0x00000000                vtable
+                0x00000168                        . = ALIGN (0x4)
+
+.fcf_pad        0x00000168      0x298
+                0x00000168                        . = ALIGN (0x4)
+ FILL mask 0xff
+                0x00000400                        . = (ORIGIN (FLASH) + 0x400)
+ *fill*         0x00000168      0x298 ff
+
+.flashconfig    0x00000400       0x10
+ *(.flashconfig)
+ .flashconfig   0x00000400       0x10 build/startup.o
+                0x00000400                flashconfig
+                0x00000001                        ASSERT ((. == 0x410), ERROR: Flash Config Field not at 0x400!)
+
+.text           0x00000410      0x38c
+                0x00000410                        . = ALIGN (0x4)
+ *(.text*)
+ .text.ADC_Init
+                0x00000410       0x38 build/src/ADC.o
+                0x00000410                ADC_Init
+ .text.ADC_Calibrate
+                0x00000448       0x98 build/src/ADC.o
+                0x00000448                ADC_Calibrate
+ .text.DAC_Init
+                0x000004e0       0x4c build/src/DAC.o
+                0x000004e0                DAC_Init
+ .text.PIT0_IRQHandler
+                0x0000052c       0x1c build/src/main.o
+                0x0000052c                PIT0_IRQHandler
+ .text.startup.main
+                0x00000548       0x70 build/src/main.o
+                0x00000548                main
+ .text.MCG_Clock120_Init
+                0x000005b8       0x90 build/src/MCG.o
+                0x000005b8                MCG_Clock120_Init
+ .text.TimerInt_Init
+                0x00000648       0x50 build/src/TimerInt.o
+                0x00000648                TimerInt_Init
+ .text.UART0_Init
+                0x00000698       0x40 build/src/uart.o
+                0x00000698                UART0_Init
+ .text.UART0_Print
+                0x000006d8       0x1c build/src/uart.o
+                0x000006d8                UART0_Print
+ .text.SystemInit
+                0x000006f4       0x30 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+                0x000006f4                SystemInit
+ .text.Reset_Handler
+                0x00000724       0x68 build/startup.o
+                0x00000724                Reset_Handler
+ .text.Default_Handler
+                0x0000078c        0x4 build/startup.o
+                0x0000078c                DebugMon_Handler
+                0x0000078c                I2C0_IRQHandler
+                0x0000078c                HardFault_Handler
+                0x0000078c                SysTick_Handler
+                0x0000078c                PendSV_Handler
+                0x0000078c                NMI_Handler
+                0x0000078c                UART0_RX_TX_IRQHandler
+                0x0000078c                I2C1_IRQHandler
+                0x0000078c                DMA2_IRQHandler
+                0x0000078c                LLWU_IRQHandler
+                0x0000078c                UART2_RX_TX_IRQHandler
+                0x0000078c                SWI_IRQHandler
+                0x0000078c                ADC0_IRQHandler
+                0x0000078c                UsageFault_Handler
+                0x0000078c                I2S0_Tx_IRQHandler
+                0x0000078c                SPI1_IRQHandler
+                0x0000078c                DMA9_IRQHandler
+                0x0000078c                DMA14_IRQHandler
+                0x0000078c                CMP1_IRQHandler
+                0x0000078c                PORTD_IRQHandler
+                0x0000078c                PORTB_IRQHandler
+                0x0000078c                ADC1_IRQHandler
+                0x0000078c                PIT2_IRQHandler
+                0x0000078c                I2S0_Rx_IRQHandler
+                0x0000078c                DMA5_IRQHandler
+                0x0000078c                RTC_IRQHandler
+                0x0000078c                PDB0_IRQHandler
+                0x0000078c                FTM1_IRQHandler
+                0x0000078c                PIT3_IRQHandler
+                0x0000078c                RTC_Seconds_IRQHandler
+                0x0000078c                MCG_IRQHandler
+                0x0000078c                UART2_ERR_IRQHandler
+                0x0000078c                DMA11_IRQHandler
+                0x0000078c                Read_Collision_IRQHandler
+                0x0000078c                Default_Handler
+                0x0000078c                DMA7_IRQHandler
+                0x0000078c                USB0_IRQHandler
+                0x0000078c                WDOG_EWM_IRQHandler
+                0x0000078c                MemManage_Handler
+                0x0000078c                SVC_Handler
+                0x0000078c                DMA13_IRQHandler
+                0x0000078c                DMA3_IRQHandler
+                0x0000078c                RNG_IRQHandler
+                0x0000078c                DMA0_IRQHandler
+                0x0000078c                LPUART0_IRQHandler
+                0x0000078c                DMA15_IRQHandler
+                0x0000078c                DAC0_IRQHandler
+                0x0000078c                DMA4_IRQHandler
+                0x0000078c                PIT1_IRQHandler
+                0x0000078c                UART0_ERR_IRQHandler
+                0x0000078c                DMA_Error_IRQHandler
+                0x0000078c                LVD_LVW_IRQHandler
+                0x0000078c                SPI0_IRQHandler
+                0x0000078c                FTM0_IRQHandler
+                0x0000078c                PORTA_IRQHandler
+                0x0000078c                DAC1_IRQHandler
+                0x0000078c                MCM_IRQHandler
+                0x0000078c                DMA12_IRQHandler
+                0x0000078c                FTM3_IRQHandler
+                0x0000078c                PORTE_IRQHandler
+                0x0000078c                FTM2_IRQHandler
+                0x0000078c                LPTMR0_IRQHandler
+                0x0000078c                BusFault_Handler
+                0x0000078c                DMA8_IRQHandler
+                0x0000078c                DMA10_IRQHandler
+                0x0000078c                UART1_ERR_IRQHandler
+                0x0000078c                UART1_RX_TX_IRQHandler
+                0x0000078c                CMP0_IRQHandler
+                0x0000078c                PORTC_IRQHandler
+                0x0000078c                DMA6_IRQHandler
+                0x0000078c                FTF_IRQHandler
+                0x0000078c                DMA1_IRQHandler
+ *(.rodata*)
+ .rodata.main.str1.4
+                0x00000790        0xc build/src/main.o
+ *(.glue_7)
+ .glue_7        0x0000079c        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x0000079c        0x0 linker stubs
+ *(.init)
+ *(.fini)
+                0x0000079c                        . = ALIGN (0x4)
+                0x0000079c                        _etext = .
+
+.vfp11_veneer   0x0000079c        0x0
+ .vfp11_veneer  0x0000079c        0x0 linker stubs
+
+.v4_bx          0x0000079c        0x0
+ .v4_bx         0x0000079c        0x0 linker stubs
+
+.iplt           0x0000079c        0x0
+ .iplt          0x0000079c        0x0 build/src/main.o
+
+.rel.dyn        0x0000079c        0x0
+ .rel.iplt      0x0000079c        0x0 build/src/main.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+
+.ARM.exidx      0x0000079c        0x0
+                0x0000079c                        __exidx_start = .
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x0000079c                        __exidx_end = .
+
+.eh_frame
+ *(.eh_frame)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+                0x0000079c                        _sidata = LOADADDR (.data)
+
+.data           0x1fff0000        0x0 load address 0x0000079c
+                0x1fff0000                        . = ALIGN (0x4)
+                0x1fff0000                        _sdata = .
+ *(.data*)
+                0x1fff0000                        . = ALIGN (0x4)
+                0x1fff0000                        _edata = .
+
+.igot.plt       0x1fff0000        0x0 load address 0x0000079c
+ .igot.plt      0x1fff0000        0x0 build/src/main.o
+
+.bss            0x1fff0000        0x0 load address 0x0000079c
+                0x1fff0000                        . = ALIGN (0x4)
+                0x1fff0000                        _sbss = .
+                0x1fff0000                        __bss_start__ = _sbss
+ *(.bss*)
+ *(COMMON)
+                0x1fff0000                        . = ALIGN (0x4)
+                0x1fff0000                        _ebss = .
+                0x1fff0000                        __bss_end__ = _ebss
+                0x1fff0000                        . = ALIGN (0x8)
+                0x1fff0000                        _end = .
+                0x1fff0000                        end = .
+                [!provide]                        PROVIDE (__heap_start = _end)
+OUTPUT(build/warbling_wire.elf elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x00000000       0x1e
+ .comment       0x00000000       0x1e build/src/ADC.o
+                                 0x1f (size before relaxing)
+ .comment       0x0000001e       0x1f build/src/DAC.o
+ .comment       0x0000001e       0x1f build/src/main.o
+ .comment       0x0000001e       0x1f build/src/MCG.o
+ .comment       0x0000001e       0x1f build/src/TimerInt.o
+ .comment       0x0000001e       0x1f build/src/uart.o
+ .comment       0x0000001e       0x1f build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+
+.ARM.attributes
+                0x00000000       0x32
+ .ARM.attributes
+                0x00000000       0x34 build/src/ADC.o
+ .ARM.attributes
+                0x00000034       0x34 build/src/DAC.o
+ .ARM.attributes
+                0x00000068       0x34 build/src/main.o
+ .ARM.attributes
+                0x0000009c       0x34 build/src/MCG.o
+ .ARM.attributes
+                0x000000d0       0x34 build/src/TimerInt.o
+ .ARM.attributes
+                0x00000104       0x34 build/src/uart.o
+ .ARM.attributes
+                0x00000138       0x34 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+ .ARM.attributes
+                0x0000016c       0x25 build/startup.o

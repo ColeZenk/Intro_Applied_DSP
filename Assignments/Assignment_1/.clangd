@@ -1,0 +1,9 @@
+CompileFlags:
+  Add:
+    - -Iinc
+    - -IRTE/_Target_1
+    - -IRTE/Device/MK22FN512VLH12
+    - -IRTE/CMSIS
+    - -DCPU_MK22FN512VLH12
+    - --target=arm-none-eabi
+    - -mcpu=cortex-m4

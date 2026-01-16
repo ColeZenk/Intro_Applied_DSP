@@ -10,7 +10,7 @@ Location : ECE 237
 - [Day 1](./Notes/Notes_Jan_14.md)
 
 ## Assignments
-- [Assignment 1](./Doc/Assignment_1.md)
+- [Assignment 1](./Assignments/Assignment_1/README_Assignment_1.md)
 - 
 
 ## TODO
