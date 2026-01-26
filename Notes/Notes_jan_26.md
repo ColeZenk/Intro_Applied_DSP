@@ -14,7 +14,10 @@ $$
 ## 2.2
 
 $$
-y(t) = x(t) * h(t) \tag{1} \\\\
+y(t) = x(t) * h(t) \tag{1}
+$$
+
+$$
 Y(\omega) = X(\omega)H(\omega)
 $$
 
