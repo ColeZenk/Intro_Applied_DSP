@@ -4,7 +4,6 @@
 
 $$
 \sum_{k=0}^{K} a_k y^{(k)}(t) = \sum_{l=0}^{L} b_l x^{(l)}(t)
-
 H(s) = \frac{Y(s)}{X(s)} = \frac{\sum_{l=0}^{L} b_l s^l}{\sum_{k=0}^{K} a_k s^k} = \frac{b_L}{a_K} \cdot \frac{\prod_{l=1}^{L}(s - z_l)}{\prod_{k=1}^{K}(s - p_k)}
 $$
 
@@ -16,7 +15,6 @@ $$
 
 $$
 y(t) = x(t) * h(t) \tag{1}
-
 Y(\omega) = X(\omega)H(\omega)
 $$
 
@@ -28,12 +26,10 @@ $$
 $$
 y(t) = ax(t-t_0) \implies H(\omega) = ae^{-j\omega t_g}
 |H(\omega)| = |a|
-
 \angle H(\omega) = -\omega t_g
-
 t_g = -\frac{d}{d\omega} \angle H(\omega) \quad \text{(group delay)}
-
 $$
+
 
 ### Hilbert transformer
 
