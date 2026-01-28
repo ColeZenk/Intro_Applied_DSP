@@ -133,16 +133,6 @@ $$
 
 With omega at this point, being some arbitrary phase shift.
 
-I think that a reasonable implementation for a filter like s is a simple low-pass filter approach.
-This will make the output look a little more like
-
-$$
-y(n) = y(n-1) + (1 -a) |x(n)|
-$$
-
-only thing is, this needs to be dyanmically changing (albeit with a static frequency). Also it shouldn't be filtering...
-So it should just affect the gain!
-
 ## Observing Dyanamic Gain Implementations
 We know it must
 - Reach a max at 0 or 2pi
