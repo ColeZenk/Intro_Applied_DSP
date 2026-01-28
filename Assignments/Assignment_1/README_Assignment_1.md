@@ -128,9 +128,7 @@ The way I look at the question is like this:
 So at this point we know that our main engine of this transformer will look something like:
 
 $$
-
 Y(t) = sin(\omega t) X(t)
-
 $$
 
 With omega at this point, being some arbitrary phase shift.
@@ -139,9 +137,7 @@ I think that a reasonable implementation for a filter like s is a simple low-pas
 This will make the output look a little more like
 
 $$
-
 y(n) = y(n-1) + (1 -a) |x(n)|
-
 $$
 
 only thing is, this needs to be dyanmically changing (albeit with a static frequency). Also it shouldn't be filtering...
@@ -156,14 +152,11 @@ We know it must
 So we know what a standard sine formula will look like...
 
 $$
-
 f(t) = \delta + \alpha sin( \omega t)
-
 $$
 
 So this yeilds 2 equations and 2 unknowns:
 $$
-
  \delta + \alpha  = 1 \\
  \delta - \alpha = .1 \\
 ==> \delta = frac{1.1}{2} = 0.55
