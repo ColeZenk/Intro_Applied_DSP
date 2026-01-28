@@ -156,6 +156,7 @@ f(t) = \delta + \alpha sin( \omega t)
 $$
 
 So this yeilds 2 equations and 2 unknowns:
+
 $$
  \delta + \alpha  = 1 \\\\
  \delta - \alpha = .1 \\\\
