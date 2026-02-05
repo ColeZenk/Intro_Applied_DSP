@@ -1,0 +1,163 @@
+[
+  {
+    "file": "src/ADC.c",
+    "arguments": [
+      "arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mfpu=fpv4-sp-d16",
+      "-mfloat-abi=hard",
+      "-mthumb",
+      "-O2",
+      "-Wall",
+      "-Iinc",
+      "-IRTE/_Target_1",
+      "-IRTE/Device/MK22FN512VLH12",
+      "-IRTE/CMSIS",
+      "-DCPU_MK22FN512VLH12",
+      "-c",
+      "src/ADC.c",
+      "-o",
+      "build/src/ADC.o"
+    ],
+    "directory": "/home/Cole/NDSU_SP26/ECE_444/Assignments/Assignment_1",
+    "output": "build/src/ADC.o"
+  },
+  {
+    "file": "src/DAC.c",
+    "arguments": [
+      "arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mfpu=fpv4-sp-d16",
+      "-mfloat-abi=hard",
+      "-mthumb",
+      "-O2",
+      "-Wall",
+      "-Iinc",
+      "-IRTE/_Target_1",
+      "-IRTE/Device/MK22FN512VLH12",
+      "-IRTE/CMSIS",
+      "-DCPU_MK22FN512VLH12",
+      "-c",
+      "src/DAC.c",
+      "-o",
+      "build/src/DAC.o"
+    ],
+    "directory": "/home/Cole/NDSU_SP26/ECE_444/Assignments/Assignment_1",
+    "output": "build/src/DAC.o"
+  },
+  {
+    "file": "src/main.c",
+    "arguments": [
+      "arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mfpu=fpv4-sp-d16",
+      "-mfloat-abi=hard",
+      "-mthumb",
+      "-O2",
+      "-Wall",
+      "-Iinc",
+      "-IRTE/_Target_1",
+      "-IRTE/Device/MK22FN512VLH12",
+      "-IRTE/CMSIS",
+      "-DCPU_MK22FN512VLH12",
+      "-c",
+      "src/main.c",
+      "-o",
+      "build/src/main.o"
+    ],
+    "directory": "/home/Cole/NDSU_SP26/ECE_444/Assignments/Assignment_1",
+    "output": "build/src/main.o"
+  },
+  {
+    "file": "src/MCG.c",
+    "arguments": [
+      "arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mfpu=fpv4-sp-d16",
+      "-mfloat-abi=hard",
+      "-mthumb",
+      "-O2",
+      "-Wall",
+      "-Iinc",
+      "-IRTE/_Target_1",
+      "-IRTE/Device/MK22FN512VLH12",
+      "-IRTE/CMSIS",
+      "-DCPU_MK22FN512VLH12",
+      "-c",
+      "src/MCG.c",
+      "-o",
+      "build/src/MCG.o"
+    ],
+    "directory": "/home/Cole/NDSU_SP26/ECE_444/Assignments/Assignment_1",
+    "output": "build/src/MCG.o"
+  },
+  {
+    "file": "src/TimerInt.c",
+    "arguments": [
+      "arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mfpu=fpv4-sp-d16",
+      "-mfloat-abi=hard",
+      "-mthumb",
+      "-O2",
+      "-Wall",
+      "-Iinc",
+      "-IRTE/_Target_1",
+      "-IRTE/Device/MK22FN512VLH12",
+      "-IRTE/CMSIS",
+      "-DCPU_MK22FN512VLH12",
+      "-c",
+      "src/TimerInt.c",
+      "-o",
+      "build/src/TimerInt.o"
+    ],
+    "directory": "/home/Cole/NDSU_SP26/ECE_444/Assignments/Assignment_1",
+    "output": "build/src/TimerInt.o"
+  },
+  {
+    "file": "RTE/Device/MK22FN512VLH12/system_MK22F51212.c",
+    "arguments": [
+      "arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mfpu=fpv4-sp-d16",
+      "-mfloat-abi=hard",
+      "-mthumb",
+      "-O2",
+      "-Wall",
+      "-Iinc",
+      "-IRTE/_Target_1",
+      "-IRTE/Device/MK22FN512VLH12",
+      "-IRTE/CMSIS",
+      "-DCPU_MK22FN512VLH12",
+      "-c",
+      "RTE/Device/MK22FN512VLH12/system_MK22F51212.c",
+      "-o",
+      "build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o"
+    ],
+    "directory": "/home/Cole/NDSU_SP26/ECE_444/Assignments/Assignment_1",
+    "output": "build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o"
+  },
+  {
+    "file": "startup_MK22F51212.s",
+    "arguments": [
+      "arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mfpu=fpv4-sp-d16",
+      "-mfloat-abi=hard",
+      "-mthumb",
+      "-O2",
+      "-Wall",
+      "-Iinc",
+      "-IRTE/_Target_1",
+      "-IRTE/Device/MK22FN512VLH12",
+      "-IRTE/CMSIS",
+      "-DCPU_MK22FN512VLH12",
+      "-c",
+      "startup_MK22F51212.s",
+      "-o",
+      "build/startup.o"
+    ],
+    "directory": "/home/Cole/NDSU_SP26/ECE_444/Assignments/Assignment_1",
+    "output": "build/startup.o"
+  }
+]
