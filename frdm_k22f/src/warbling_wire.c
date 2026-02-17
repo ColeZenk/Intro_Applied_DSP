@@ -21,7 +21,7 @@
 #include "TimerInt.h"
 
 
-#include "WarblingWire.h"
+#include "warbling_wire.h"
 
 #ifdef TEST_OUTPUT
 #include "Utilities.h"
@@ -38,7 +38,7 @@ static inline uint16_t outputTest(void);
 /*************************************************************************
  FILE SCOPED FUNCTIONS
  *************************************************************************/
-static inline uint16_t warbleTransform(uint16_t input);
+static inline uint16_t amplitude_modulator(uint16_t input);
 static inline uint16_t processInput(uint16_t adc_sample);
 
 #if defined(SPECTRAL_INVERTER)
@@ -50,7 +50,7 @@ static inline uint16_t spectral_invert(uint16_t input);
  *************************************************************************/
 
 __attribute__((always_inline))
-static inline uint16_t warbleTransform(uint16_t input){
+static inline uint16_t amplitude_modulator(uint16_t input){
     static float accumulated_phase = 0.0f;
 
     // Calculations
@@ -94,11 +94,6 @@ void WarbleWire(void){
     DAC0->DAT[0].DATH = (output >> 8) & 0x0F;
 }
 
-__attribute__((hot))
-void PIT0_IRQHandler(void) {
-    PIT->CHANNEL[0].TFLG = PIT_TFLG_TIF_MASK;
-    WarbleWire();
-}
 
 void WarblingWire_Init(void){
    TimerInt_Init();
@@ -114,7 +109,7 @@ static inline uint16_t processInput(uint16_t adc_sample){
 
 #if !defined(TEST_MODE) || !defined(SPECTRAL_INVETER)
 
-    return warbleTransform(adc_sample);
+    return amplitude_modulator(adc_sample);
 
 #elif  defined(TEST_PASSTHROUGH)
     return adc_sample;
@@ -154,17 +149,17 @@ static inline uint16_t outputTest(void){
 
     switch(waveformToTest){
         case WAVEFORM_SINE:
-             testOutput = warbleTransform((uint16_t)WaveGen_Sine(&test_osc));
+             testOutput = amplitude_modulator((uint16_t)WaveGen_Sine(&test_osc));
              break;
         case WAVEFORM_TRIANGLE:
-             testOutput = warbleTransform((uint16_t)WaveGen_Triangle(&test_osc));
+             testOutput = amplitude_modulator((uint16_t)WaveGen_Triangle(&test_osc));
              break;
         case WAVEFORM_SQUARE:
-             testOutput = warbleTransform((uint16_t)WaveGen_Square(&test_osc));
+             testOutput = amplitude_modulator((uint16_t)WaveGen_Square(&test_osc));
              break;
         default:
              waveformToTest = WAVEFORM_SINE;
-             testOutput = warbleTransform((uint16_t)WaveGen_Sine(&test_osc));
+             testOutput = amplitude_modulator((uint16_t)WaveGen_Sine(&test_osc));
              break;
     }
 

@@ -44,7 +44,6 @@ void WarblingWire_Init(void);
  * @purpose  Comment or uncomment to disable certain features for clean encapsulated tests that
  *           enforce minimal coupling.
  */
-#define SPECTRAL_INVERTER     //SDD201
 /* #define TEST_PASSTHROUGH */
 /* #define TEST_OUTPUT */
 

@@ -16,14 +16,15 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "Utilities.h"
 #include "MK22F51212.h"
 #include "TimerInt.h"
-#include "wire_inverter.h"
+#include "spectral_modulation.h"
 
 /*************************************************************************
  File scope
  *************************************************************************/
-static inline uint16_t process_input(uint16_t input);
+static bool nyquist_clock = 0x0;
 
 /*************************************************************************
  Primary logic implementations
@@ -31,11 +32,15 @@ static inline uint16_t process_input(uint16_t input);
 
 #ifdef INVERT
 __attribute__((always_inline))
-static inline uint16_t spectral_invert(uint16_t input)
+static inline uint16_t spectral_invert(uint16_t input, bool clock)
 {
-    static bool spectral_state = EVEN;
-    spectral_state ^= 1;
-    return spectral_state ? (4096u - input) : input;
+    /* static bool spectral_state = EVEN; */
+    /* spectral_state ^= 1; */
+    /* return spectral_state ? (4096u - input) : input; */
+
+    int16_t signed_input = (int16_t)input - DC_OFFSET;
+    signed_input = COND_NEGATE(signed_input, clock);
+    return (uint16_t)(signed_input + DC_OFFSET);
 }
 #endif
 
@@ -71,25 +76,22 @@ static inline uint16_t manual_tune(uint16_t input)
  *************************************************************************/
 
 __attribute__((hot))
-void PIT0_IRQHandler(void)
-{
-    PIT->CHANNEL[0].TFLG = PIT_TFLG_TIF_MASK;
-
-    uint16_t adc_sample = ADC0->R[0];              // Read previous result
-    ADC0->SC1[0] = ADC_SC1_ADCH(ADC_CHANNEL);      // Start next conversion
-
-    uint16_t output = process_input(adc_sample);
-    // Write to DAC (12-bit)
-    DAC0->DAT[0].DATL = output & 0xFF;
-    DAC0->DAT[0].DATH = (output >> 8) & 0x0F;
-}
-
 void spectral_inverter_init(void)
 {
-    TimerInt_Init();
     ADC0->SC1[0] = ADC_SC1_ADCH(ADC_CHANNEL);
 }
 
+uint16_t apply_modulation(uint16_t input)
+{
+#ifdef INVERT
+    return spectral_invert(input, nyquist_clock);
+#elif defined(FREQ_SHIFT)
+    return frequency_shift(input);
+#elif defined(TUNE_RESOLUTION)
+    return manual_tune(input);
+#endif
+    nyquist_clock ^= 1;
+}
 
 #ifdef TUNE_RESOLUTION
 void init_buttons(void)
@@ -111,15 +113,4 @@ void init_buttons(void)
 /*************************************************************************
  File scoped implementations
  *************************************************************************/
-__attribute__((always_inline))
-static inline uint16_t process_input(uint16_t input)
-{
-#ifdef INVERT
-    return spectral_invert(input);
-#elif defined(FREQ_SHIFT)
-    return frequency_shift(input);
-#elif defined(TUNE_RESOLUTION)
-    return manual_tune(input);
-#endif
-}
 

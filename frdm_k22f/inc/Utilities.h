@@ -5,6 +5,18 @@
 
 #define FS_HZ 10000.0f
 
+/**
+ * @brief      Uses 2s complement trick with xors to flip sign (while also accounting for the sign
+ *             change offset). effectively like a mux with a mask.
+ *
+ * @param  x   Input the will be inverted or left unchanged
+ * @param  s   Enables sign change or allows passthrough
+ *
+ * @return x   If s is low, then return x unchanged (x ^ 0) if s is high, 2s complement x and
+ *             add 1 to account for sign change (~x + 1)
+ */
+#define  COND_NEGATE(x, s)                      ((x ^ -s) + s)
+
 void UART0_Init(void);
 void UART0_PutChar(char c);
 void UART0_Print(const char *s);

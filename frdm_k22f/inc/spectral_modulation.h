@@ -6,9 +6,11 @@
  * Public interface for digital spectral inversion, frequency shifting,
  * and adjustable bit resolution systems.
  */
+#include <stdint.h>
+#ifndef SPECTRAL_MODULATION_H
+#define SPECTRAL_MODULATION_H
 
-#ifndef WIRE_INVERTER_H
-#define WIRE_INVERTER_H
+#define PHASE_MODULATION_ACTIVE
 
 
 #define BIT_RESOLUTION  (1u << 12u)          //4096
@@ -18,8 +20,17 @@
 #define EVEN            0
 
 /* #define INVERT */
-/* #define FREQ_SHIFT */
-#define TUNE_RESOLUTION
+#define FREQ_SHIFT
+/* #define TUNE_RESOLUTION */
+
+
+#if defined(INVERT) && defined(TUNE_RESOLUTION) ||  \
+    defined(FREQ_SHIFT) && defined(TUNE_RESOLUTION) || \
+    defined(FREQ_SHIFT) && defined(INVERT)
+
+    #error "Multiple spectral modulators enabled simultaneously"
+#endif
+
 
 /**
  * @brief Initialize the spectral inverter system
@@ -32,8 +43,10 @@
  */
 void spectral_inverter_init(void);
 
+uint16_t apply_modulation(uint16_t input);
+
 #ifdef TUNE_RESOLUTION
 void init_buttons(void);
 #endif
 
-#endif /* WIRE_INVERTER_H */
+#endif /* SPECTRAL_MODULATION_H */

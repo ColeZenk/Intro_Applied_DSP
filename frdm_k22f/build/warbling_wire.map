@@ -67,8 +67,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/src/wire_inverter.o
  .data          0x0000000000000000        0x0 build/src/wire_inverter.o
  .bss           0x0000000000000000        0x0 build/src/wire_inverter.o
- .text.init_buttons
-                0x0000000000000000       0x48 build/src/wire_inverter.o
  .text          0x0000000000000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
  .data          0x0000000000000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
  .bss           0x0000000000000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
@@ -333,7 +331,7 @@ END GROUP
                 0x0000000000000400                flashconfig
                 0x0000000000000001                ASSERT ((. == 0x410), ERROR: Flash Config Field not at 0x400!)
 
-.text           0x0000000000000410      0x2f8
+.text           0x0000000000000410      0x320
                 0x0000000000000410                . = ALIGN (0x4)
  *(.text*)
  .text.ADC_Init
@@ -355,150 +353,155 @@ END GROUP
                 0x00000000000005d8       0x50 build/src/TimerInt.o
                 0x00000000000005d8                TimerInt_Init
  .text.hot.PIT0_IRQHandler
-                0x0000000000000628       0x30 build/src/wire_inverter.o
+                0x0000000000000628       0x54 build/src/wire_inverter.o
                 0x0000000000000628                PIT0_IRQHandler
  .text.spectral_inverter_init
-                0x0000000000000658       0x14 build/src/wire_inverter.o
-                0x0000000000000658                spectral_inverter_init
+                0x000000000000067c       0x14 build/src/wire_inverter.o
+                0x000000000000067c                spectral_inverter_init
  .text.SystemInit
-                0x000000000000066c       0x30 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
-                0x000000000000066c                SystemInit
+                0x0000000000000690       0x30 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+                0x0000000000000690                SystemInit
  .text.Reset_Handler
-                0x000000000000069c       0x68 build/startup.o
-                0x000000000000069c                Reset_Handler
+                0x00000000000006c0       0x68 build/startup.o
+                0x00000000000006c0                Reset_Handler
  .text.Default_Handler
-                0x0000000000000704        0x4 build/startup.o
-                0x0000000000000704                DebugMon_Handler
-                0x0000000000000704                I2C0_IRQHandler
-                0x0000000000000704                HardFault_Handler
-                0x0000000000000704                SysTick_Handler
-                0x0000000000000704                PendSV_Handler
-                0x0000000000000704                NMI_Handler
-                0x0000000000000704                UART0_RX_TX_IRQHandler
-                0x0000000000000704                I2C1_IRQHandler
-                0x0000000000000704                DMA2_IRQHandler
-                0x0000000000000704                LLWU_IRQHandler
-                0x0000000000000704                UART2_RX_TX_IRQHandler
-                0x0000000000000704                SWI_IRQHandler
-                0x0000000000000704                ADC0_IRQHandler
-                0x0000000000000704                UsageFault_Handler
-                0x0000000000000704                I2S0_Tx_IRQHandler
-                0x0000000000000704                SPI1_IRQHandler
-                0x0000000000000704                DMA9_IRQHandler
-                0x0000000000000704                DMA14_IRQHandler
-                0x0000000000000704                CMP1_IRQHandler
-                0x0000000000000704                PORTD_IRQHandler
-                0x0000000000000704                PORTB_IRQHandler
-                0x0000000000000704                ADC1_IRQHandler
-                0x0000000000000704                PIT2_IRQHandler
-                0x0000000000000704                I2S0_Rx_IRQHandler
-                0x0000000000000704                DMA5_IRQHandler
-                0x0000000000000704                RTC_IRQHandler
-                0x0000000000000704                PDB0_IRQHandler
-                0x0000000000000704                FTM1_IRQHandler
-                0x0000000000000704                PIT3_IRQHandler
-                0x0000000000000704                RTC_Seconds_IRQHandler
-                0x0000000000000704                MCG_IRQHandler
-                0x0000000000000704                UART2_ERR_IRQHandler
-                0x0000000000000704                DMA11_IRQHandler
-                0x0000000000000704                Read_Collision_IRQHandler
-                0x0000000000000704                Default_Handler
-                0x0000000000000704                DMA7_IRQHandler
-                0x0000000000000704                USB0_IRQHandler
-                0x0000000000000704                WDOG_EWM_IRQHandler
-                0x0000000000000704                MemManage_Handler
-                0x0000000000000704                SVC_Handler
-                0x0000000000000704                DMA13_IRQHandler
-                0x0000000000000704                DMA3_IRQHandler
-                0x0000000000000704                RNG_IRQHandler
-                0x0000000000000704                DMA0_IRQHandler
-                0x0000000000000704                LPUART0_IRQHandler
-                0x0000000000000704                DMA15_IRQHandler
-                0x0000000000000704                DAC0_IRQHandler
-                0x0000000000000704                DMA4_IRQHandler
-                0x0000000000000704                PIT1_IRQHandler
-                0x0000000000000704                UART0_ERR_IRQHandler
-                0x0000000000000704                DMA_Error_IRQHandler
-                0x0000000000000704                LVD_LVW_IRQHandler
-                0x0000000000000704                SPI0_IRQHandler
-                0x0000000000000704                FTM0_IRQHandler
-                0x0000000000000704                PORTA_IRQHandler
-                0x0000000000000704                DAC1_IRQHandler
-                0x0000000000000704                MCM_IRQHandler
-                0x0000000000000704                DMA12_IRQHandler
-                0x0000000000000704                FTM3_IRQHandler
-                0x0000000000000704                PORTE_IRQHandler
-                0x0000000000000704                FTM2_IRQHandler
-                0x0000000000000704                LPTMR0_IRQHandler
-                0x0000000000000704                BusFault_Handler
-                0x0000000000000704                DMA8_IRQHandler
-                0x0000000000000704                DMA10_IRQHandler
-                0x0000000000000704                UART1_ERR_IRQHandler
-                0x0000000000000704                UART1_RX_TX_IRQHandler
-                0x0000000000000704                CMP0_IRQHandler
-                0x0000000000000704                PORTC_IRQHandler
-                0x0000000000000704                DMA6_IRQHandler
-                0x0000000000000704                FTF_IRQHandler
-                0x0000000000000704                DMA1_IRQHandler
+                0x0000000000000728        0x4 build/startup.o
+                0x0000000000000728                DebugMon_Handler
+                0x0000000000000728                I2C0_IRQHandler
+                0x0000000000000728                HardFault_Handler
+                0x0000000000000728                SysTick_Handler
+                0x0000000000000728                PendSV_Handler
+                0x0000000000000728                NMI_Handler
+                0x0000000000000728                UART0_RX_TX_IRQHandler
+                0x0000000000000728                I2C1_IRQHandler
+                0x0000000000000728                DMA2_IRQHandler
+                0x0000000000000728                LLWU_IRQHandler
+                0x0000000000000728                UART2_RX_TX_IRQHandler
+                0x0000000000000728                SWI_IRQHandler
+                0x0000000000000728                ADC0_IRQHandler
+                0x0000000000000728                UsageFault_Handler
+                0x0000000000000728                I2S0_Tx_IRQHandler
+                0x0000000000000728                SPI1_IRQHandler
+                0x0000000000000728                DMA9_IRQHandler
+                0x0000000000000728                DMA14_IRQHandler
+                0x0000000000000728                CMP1_IRQHandler
+                0x0000000000000728                PORTD_IRQHandler
+                0x0000000000000728                PORTB_IRQHandler
+                0x0000000000000728                ADC1_IRQHandler
+                0x0000000000000728                PIT2_IRQHandler
+                0x0000000000000728                I2S0_Rx_IRQHandler
+                0x0000000000000728                DMA5_IRQHandler
+                0x0000000000000728                RTC_IRQHandler
+                0x0000000000000728                PDB0_IRQHandler
+                0x0000000000000728                FTM1_IRQHandler
+                0x0000000000000728                PIT3_IRQHandler
+                0x0000000000000728                RTC_Seconds_IRQHandler
+                0x0000000000000728                MCG_IRQHandler
+                0x0000000000000728                UART2_ERR_IRQHandler
+                0x0000000000000728                DMA11_IRQHandler
+                0x0000000000000728                Read_Collision_IRQHandler
+                0x0000000000000728                Default_Handler
+                0x0000000000000728                DMA7_IRQHandler
+                0x0000000000000728                USB0_IRQHandler
+                0x0000000000000728                WDOG_EWM_IRQHandler
+                0x0000000000000728                MemManage_Handler
+                0x0000000000000728                SVC_Handler
+                0x0000000000000728                DMA13_IRQHandler
+                0x0000000000000728                DMA3_IRQHandler
+                0x0000000000000728                RNG_IRQHandler
+                0x0000000000000728                DMA0_IRQHandler
+                0x0000000000000728                LPUART0_IRQHandler
+                0x0000000000000728                DMA15_IRQHandler
+                0x0000000000000728                DAC0_IRQHandler
+                0x0000000000000728                DMA4_IRQHandler
+                0x0000000000000728                PIT1_IRQHandler
+                0x0000000000000728                UART0_ERR_IRQHandler
+                0x0000000000000728                DMA_Error_IRQHandler
+                0x0000000000000728                LVD_LVW_IRQHandler
+                0x0000000000000728                SPI0_IRQHandler
+                0x0000000000000728                FTM0_IRQHandler
+                0x0000000000000728                PORTA_IRQHandler
+                0x0000000000000728                DAC1_IRQHandler
+                0x0000000000000728                MCM_IRQHandler
+                0x0000000000000728                DMA12_IRQHandler
+                0x0000000000000728                FTM3_IRQHandler
+                0x0000000000000728                PORTE_IRQHandler
+                0x0000000000000728                FTM2_IRQHandler
+                0x0000000000000728                LPTMR0_IRQHandler
+                0x0000000000000728                BusFault_Handler
+                0x0000000000000728                DMA8_IRQHandler
+                0x0000000000000728                DMA10_IRQHandler
+                0x0000000000000728                UART1_ERR_IRQHandler
+                0x0000000000000728                UART1_RX_TX_IRQHandler
+                0x0000000000000728                CMP0_IRQHandler
+                0x0000000000000728                PORTC_IRQHandler
+                0x0000000000000728                DMA6_IRQHandler
+                0x0000000000000728                FTF_IRQHandler
+                0x0000000000000728                DMA1_IRQHandler
  *(.rodata*)
+ .rodata.states.7195
+                0x000000000000072c        0x4 build/src/wire_inverter.o
  *(.glue_7)
- .glue_7        0x0000000000000708        0x0 linker stubs
+ .glue_7        0x0000000000000730        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000000000708        0x0 linker stubs
+ .glue_7t       0x0000000000000730        0x0 linker stubs
  *(.init)
  *(.fini)
-                0x0000000000000708                . = ALIGN (0x4)
-                0x0000000000000708                _etext = .
+                0x0000000000000730                . = ALIGN (0x4)
+                0x0000000000000730                _etext = .
 
-.vfp11_veneer   0x0000000000000708        0x0
- .vfp11_veneer  0x0000000000000708        0x0 linker stubs
+.vfp11_veneer   0x0000000000000730        0x0
+ .vfp11_veneer  0x0000000000000730        0x0 linker stubs
 
-.v4_bx          0x0000000000000708        0x0
- .v4_bx         0x0000000000000708        0x0 linker stubs
+.v4_bx          0x0000000000000730        0x0
+ .v4_bx         0x0000000000000730        0x0 linker stubs
 
-.iplt           0x0000000000000708        0x0
- .iplt          0x0000000000000708        0x0 build/src/main.o
+.iplt           0x0000000000000730        0x0
+ .iplt          0x0000000000000730        0x0 build/src/main.o
 
-.rel.dyn        0x0000000000000708        0x0
- .rel.iplt      0x0000000000000708        0x0 build/src/main.o
+.rel.dyn        0x0000000000000730        0x0
+ .rel.iplt      0x0000000000000730        0x0 build/src/main.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM.exidx      0x0000000000000708        0x0
-                0x0000000000000708                __exidx_start = .
+.ARM.exidx      0x0000000000000730        0x0
+                0x0000000000000730                __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000000000000708                __exidx_end = .
+                0x0000000000000730                __exidx_end = .
 
 .eh_frame
  *(.eh_frame)
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
-                0x0000000000000708                _sidata = LOADADDR (.data)
+                0x0000000000000730                _sidata = LOADADDR (.data)
 
-.data           0x000000001fff0000        0x0 load address 0x0000000000000708
+.data           0x000000001fff0000        0x0 load address 0x0000000000000730
                 0x000000001fff0000                . = ALIGN (0x4)
                 0x000000001fff0000                _sdata = .
  *(.data*)
                 0x000000001fff0000                . = ALIGN (0x4)
                 0x000000001fff0000                _edata = .
 
-.igot.plt       0x000000001fff0000        0x0 load address 0x0000000000000708
+.igot.plt       0x000000001fff0000        0x0 load address 0x0000000000000730
  .igot.plt      0x000000001fff0000        0x0 build/src/main.o
 
-.bss            0x000000001fff0000        0x0 load address 0x0000000000000708
+.bss            0x000000001fff0000        0x4 load address 0x0000000000000730
                 0x000000001fff0000                . = ALIGN (0x4)
                 0x000000001fff0000                _sbss = .
                 0x000000001fff0000                __bss_start__ = _sbss
  *(.bss*)
+ .bss.state.7194
+                0x000000001fff0000        0x1 build/src/wire_inverter.o
  *(COMMON)
-                0x000000001fff0000                . = ALIGN (0x4)
-                0x000000001fff0000                _ebss = .
-                0x000000001fff0000                __bss_end__ = _ebss
-                0x000000001fff0000                . = ALIGN (0x8)
-                0x000000001fff0000                _end = .
-                0x000000001fff0000                end = .
+                0x000000001fff0004                . = ALIGN (0x4)
+ *fill*         0x000000001fff0001        0x3 
+                0x000000001fff0004                _ebss = .
+                0x000000001fff0004                __bss_end__ = _ebss
+                0x000000001fff0008                . = ALIGN (0x8)
+                0x000000001fff0008                _end = .
+                0x000000001fff0008                end = .
                 [!provide]                        PROVIDE (__heap_start = _end)
 OUTPUT(build/warbling_wire.elf elf32-littlearm)
 
