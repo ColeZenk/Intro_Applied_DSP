@@ -44,9 +44,10 @@ SOURCES = \
 	$(SRC_DIR)/DAC.c \
 	$(SRC_DIR)/main.c \
 	$(SRC_DIR)/MCG.c \
+  $(SRC_DIR)/isr.c\
 	$(SRC_DIR)/TimerInt.c \
   $(SRC_DIR)/Utilities.c \
-  $(SRC_DIR)/wire_inverter.c \
+  $(SRC_DIR)/fourier_synth.c \
 	RTE/Device/MK22FN512VLH12/system_MK22F51212.c
 
 ASM_SOURCES = startup_MK22F51212.s

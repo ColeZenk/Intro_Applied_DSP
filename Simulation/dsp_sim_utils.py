@@ -4,6 +4,7 @@ A simple file containing simple utils to make DSP easier
 '''
 import matplotlib.pyplot as plot
 from scipy import signal
+from scipy import integrate
 import numpy as np
 
 
@@ -92,3 +93,34 @@ def find_omega_0(num, den, cutoff_db=-1):
     omega_0 = omega_vals[index]
 
     return omega_0
+
+
+def find_fft_k(T, function, K_max, C_1=0, C_2=1, C_3=1):
+    Y_k = np.zeros(K_max+1, dtype=complex)
+    omega_0 = 2 * np.pi / T
+
+    def integrand_real(t, k):
+        return function(t) * np.cos(k * omega_0 * t)
+
+    def integrand_imag(t, k):
+        return function(t) * np.sin(k * omega_0 * t)
+
+    Y_k[0] = (C_2 / T) * integrate.quad(function, -T/2, T/2)[0] + C_1
+
+    for k in range(1, K_max + 1):
+        real_part = integrate.quad(integrand_real, -T/2, T/2, args=(k,), limit=200)[0]
+        imag_part = integrate.quad(integrand_imag, -T/2, T/2, args=(k,), limit=200)[0]
+        Y_k[k] = (C_2 / T) * (real_part - 1j * imag_part)
+
+    return Y_k
+
+
+def fft_synth_real(Y_k, omega_0, K, t):
+    y = np.real(Y_k[0]) * np.ones(len(t))
+    for k in range(1, K+1):
+        a_k = 2 * np.real(Y_k[k])      # Factor of 2 to account for -k
+        b_k = -2 * np.imag(Y_k[k])
+
+        # Apply Eulers and seperate for hardware realization (C doesn't do j)
+        y += a_k * np.cos(k * omega_0 * t) + b_k * np.sin(k * omega_0 * t)
+    return y

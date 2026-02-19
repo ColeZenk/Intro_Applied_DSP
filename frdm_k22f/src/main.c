@@ -13,17 +13,17 @@
 #include "MCG.h"
 #include "TimerInt.h"
 
-// Assignment 1 | Warbling Wire
 /* #include "WarblingWire.h" */
-#include "wire_inverter.h"
+/* #include "wire_inverter.h" */
+#include  "fourier_synth.h"
 
 int main(void) {
     MCG_Clock120_Init();
     ADC_Init();
     ADC_Calibrate();
     DAC_Init();
-
-    spectral_inverter_init();
+    fourier_synth_init();
+    TimerInt_Init();
 
 #ifdef TUNE_RESOLUTION
     init_buttons();
