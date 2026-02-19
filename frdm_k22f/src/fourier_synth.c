@@ -55,7 +55,7 @@ static const float b_k[KMAX + 1] = {
 /*************************************************************************
  FILE SCOPE
  *************************************************************************/
-static uint16_t lut[KMAX][PERIOD_SAMPLES];
+static uint16_t lut[KMAX + 1][PERIOD_SAMPLES+1];
 static uint8_t  K_current = 10;
 static uint16_t sample_idx = 0;
 
@@ -74,17 +74,18 @@ void fourier_synth_init(void)
                    - 2.0f * b_k[k] * sinf(k * OMEGA_0 * t);
             }
 
-            if (y < 0.0f)    y = 0.0f;
+            // Clamping to ensure no clipping
+            if (y < 0.0f) y = 0.0f;
             if (y > 4095.0f) y = 4095.0f;
+
+            // Safety (redundant maybe but has no effect on runtime)
+            if (K == 0) y = a_k[0];
 
             lut[K][n] = (uint16_t)y;
         }
     }
 }
 
-uint16_t fourier_synth_debug(void) {
-    return lut[9][0];
-}
 /*************************************************************************
  ISR INTERFACE
  *************************************************************************/
@@ -111,7 +112,7 @@ void fourier_synth_k_inc(void)
 
 void fourier_synth_k_dec(void)
 {
-    if (K_current > 1) {
+    if (K_current > 0) {
         K_current--;
         sample_idx = 0;
     }

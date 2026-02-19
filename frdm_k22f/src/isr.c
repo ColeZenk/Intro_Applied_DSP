@@ -12,7 +12,7 @@
 #include "fourier_synth.h"
 
 void PIT0_IRQHandler(void){
-
+    GPIOA->PSOR = (1<<1);   // Set red LED to 0
     PIT->CHANNEL[0].TFLG = PIT_TFLG_TIF_MASK;
 
 #if !defined(FOURIER_SYNTH_ACTIVE)
@@ -36,4 +36,20 @@ void PIT0_IRQHandler(void){
     // Write to DAC (12-bit)
     DAC0->DAT[0].DATL = output & 0xFF;
     DAC0->DAT[0].DATH = (output >> 8) & 0x0F;
+    GPIOA->PCOR = (1<<1);   // Clear red LED set 0
+}
+
+
+void PORTC_IRQHandler(void) {
+    if (PORTC->ISFR & (1<<1)) {
+        fourier_synth_k_inc();
+        PORTC->ISFR = (1<<1);  // clear flag
+    }
+}
+
+void PORTB_IRQHandler(void) {
+    if (PORTB->ISFR & (1<<17)) {
+        fourier_synth_k_dec();
+        PORTB->ISFR = (1<<17);
+    }
 }

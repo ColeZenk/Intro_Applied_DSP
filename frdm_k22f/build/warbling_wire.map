@@ -74,10 +74,6 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 build/src/fourier_synth.o
  .text.fourier_synth_debug
                 0x0000000000000000        0xc build/src/fourier_synth.o
- .text.fourier_synth_k_inc
-                0x0000000000000000       0x1c build/src/fourier_synth.o
- .text.fourier_synth_k_dec
-                0x0000000000000000       0x1c build/src/fourier_synth.o
  .text          0x0000000000000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
  .data          0x0000000000000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
  .bss           0x0000000000000000        0x0 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
@@ -231,7 +227,7 @@ END GROUP
                 0x0000000000000400                flashconfig
                 0x0000000000000001                ASSERT ((. == 0x410), ERROR: Flash Config Field not at 0x400!)
 
-.text           0x0000000000000410     0x15a4
+.text           0x0000000000000410     0x1680
                 0x0000000000000410                . = ALIGN (0x4)
  *(.text*)
  .text.ADC_Init
@@ -244,172 +240,182 @@ END GROUP
                 0x00000000000004d4       0x54 build/src/DAC.o
                 0x00000000000004d4                DAC_Init
  .text.startup.main
-                0x0000000000000528       0x20 build/src/main.o
+                0x0000000000000528       0x78 build/src/main.o
                 0x0000000000000528                main
  .text.MCG_Clock120_Init
-                0x0000000000000548       0x94 build/src/MCG.o
-                0x0000000000000548                MCG_Clock120_Init
+                0x00000000000005a0       0x94 build/src/MCG.o
+                0x00000000000005a0                MCG_Clock120_Init
  .text.PIT0_IRQHandler
-                0x00000000000005dc       0x24 build/src/isr.o
-                0x00000000000005dc                PIT0_IRQHandler
+                0x0000000000000634       0x30 build/src/isr.o
+                0x0000000000000634                PIT0_IRQHandler
+ .text.PORTC_IRQHandler
+                0x0000000000000664       0x20 build/src/isr.o
+                0x0000000000000664                PORTC_IRQHandler
+ .text.PORTB_IRQHandler
+                0x0000000000000684       0x20 build/src/isr.o
+                0x0000000000000684                PORTB_IRQHandler
  .text.TimerInt_Init
-                0x0000000000000600       0x50 build/src/TimerInt.o
-                0x0000000000000600                TimerInt_Init
+                0x00000000000006a4       0x50 build/src/TimerInt.o
+                0x00000000000006a4                TimerInt_Init
  .text.fourier_synth_init
-                0x0000000000000650      0x114 build/src/fourier_synth.o
-                0x0000000000000650                fourier_synth_init
+                0x00000000000006f4      0x110 build/src/fourier_synth.o
+                0x00000000000006f4                fourier_synth_init
  .text.fourier_synth_sample
-                0x0000000000000764       0x38 build/src/fourier_synth.o
-                0x0000000000000764                fourier_synth_sample
+                0x0000000000000804       0x3c build/src/fourier_synth.o
+                0x0000000000000804                fourier_synth_sample
+ .text.fourier_synth_k_inc
+                0x0000000000000840       0x1c build/src/fourier_synth.o
+                0x0000000000000840                fourier_synth_k_inc
+ .text.fourier_synth_k_dec
+                0x000000000000085c       0x1c build/src/fourier_synth.o
+                0x000000000000085c                fourier_synth_k_dec
  .text.SystemInit
-                0x000000000000079c       0x30 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
-                0x000000000000079c                SystemInit
+                0x0000000000000878       0x30 build/RTE/Device/MK22FN512VLH12/system_MK22F51212.o
+                0x0000000000000878                SystemInit
  .text.Reset_Handler
-                0x00000000000007cc       0x68 build/startup.o
-                0x00000000000007cc                Reset_Handler
+                0x00000000000008a8       0x68 build/startup.o
+                0x00000000000008a8                Reset_Handler
  .text.Default_Handler
-                0x0000000000000834        0x4 build/startup.o
-                0x0000000000000834                DebugMon_Handler
-                0x0000000000000834                I2C0_IRQHandler
-                0x0000000000000834                HardFault_Handler
-                0x0000000000000834                SysTick_Handler
-                0x0000000000000834                PendSV_Handler
-                0x0000000000000834                NMI_Handler
-                0x0000000000000834                UART0_RX_TX_IRQHandler
-                0x0000000000000834                I2C1_IRQHandler
-                0x0000000000000834                DMA2_IRQHandler
-                0x0000000000000834                LLWU_IRQHandler
-                0x0000000000000834                UART2_RX_TX_IRQHandler
-                0x0000000000000834                SWI_IRQHandler
-                0x0000000000000834                ADC0_IRQHandler
-                0x0000000000000834                UsageFault_Handler
-                0x0000000000000834                I2S0_Tx_IRQHandler
-                0x0000000000000834                SPI1_IRQHandler
-                0x0000000000000834                DMA9_IRQHandler
-                0x0000000000000834                DMA14_IRQHandler
-                0x0000000000000834                CMP1_IRQHandler
-                0x0000000000000834                PORTD_IRQHandler
-                0x0000000000000834                PORTB_IRQHandler
-                0x0000000000000834                ADC1_IRQHandler
-                0x0000000000000834                PIT2_IRQHandler
-                0x0000000000000834                I2S0_Rx_IRQHandler
-                0x0000000000000834                DMA5_IRQHandler
-                0x0000000000000834                RTC_IRQHandler
-                0x0000000000000834                PDB0_IRQHandler
-                0x0000000000000834                FTM1_IRQHandler
-                0x0000000000000834                PIT3_IRQHandler
-                0x0000000000000834                RTC_Seconds_IRQHandler
-                0x0000000000000834                MCG_IRQHandler
-                0x0000000000000834                UART2_ERR_IRQHandler
-                0x0000000000000834                DMA11_IRQHandler
-                0x0000000000000834                Read_Collision_IRQHandler
-                0x0000000000000834                Default_Handler
-                0x0000000000000834                DMA7_IRQHandler
-                0x0000000000000834                USB0_IRQHandler
-                0x0000000000000834                WDOG_EWM_IRQHandler
-                0x0000000000000834                MemManage_Handler
-                0x0000000000000834                SVC_Handler
-                0x0000000000000834                DMA13_IRQHandler
-                0x0000000000000834                DMA3_IRQHandler
-                0x0000000000000834                RNG_IRQHandler
-                0x0000000000000834                DMA0_IRQHandler
-                0x0000000000000834                LPUART0_IRQHandler
-                0x0000000000000834                DMA15_IRQHandler
-                0x0000000000000834                DAC0_IRQHandler
-                0x0000000000000834                DMA4_IRQHandler
-                0x0000000000000834                PIT1_IRQHandler
-                0x0000000000000834                UART0_ERR_IRQHandler
-                0x0000000000000834                DMA_Error_IRQHandler
-                0x0000000000000834                LVD_LVW_IRQHandler
-                0x0000000000000834                SPI0_IRQHandler
-                0x0000000000000834                FTM0_IRQHandler
-                0x0000000000000834                PORTA_IRQHandler
-                0x0000000000000834                DAC1_IRQHandler
-                0x0000000000000834                MCM_IRQHandler
-                0x0000000000000834                DMA12_IRQHandler
-                0x0000000000000834                FTM3_IRQHandler
-                0x0000000000000834                PORTE_IRQHandler
-                0x0000000000000834                FTM2_IRQHandler
-                0x0000000000000834                LPTMR0_IRQHandler
-                0x0000000000000834                BusFault_Handler
-                0x0000000000000834                DMA8_IRQHandler
-                0x0000000000000834                DMA10_IRQHandler
-                0x0000000000000834                UART1_ERR_IRQHandler
-                0x0000000000000834                UART1_RX_TX_IRQHandler
-                0x0000000000000834                CMP0_IRQHandler
-                0x0000000000000834                PORTC_IRQHandler
-                0x0000000000000834                DMA6_IRQHandler
-                0x0000000000000834                FTF_IRQHandler
-                0x0000000000000834                DMA1_IRQHandler
- .text.cosf     0x0000000000000838       0x90 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_cos.o)
-                0x0000000000000838                cosf
- .text.sinf     0x00000000000008c8       0x94 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_sin.o)
-                0x00000000000008c8                sinf
+                0x0000000000000910        0x4 build/startup.o
+                0x0000000000000910                DebugMon_Handler
+                0x0000000000000910                I2C0_IRQHandler
+                0x0000000000000910                HardFault_Handler
+                0x0000000000000910                SysTick_Handler
+                0x0000000000000910                PendSV_Handler
+                0x0000000000000910                NMI_Handler
+                0x0000000000000910                UART0_RX_TX_IRQHandler
+                0x0000000000000910                I2C1_IRQHandler
+                0x0000000000000910                DMA2_IRQHandler
+                0x0000000000000910                LLWU_IRQHandler
+                0x0000000000000910                UART2_RX_TX_IRQHandler
+                0x0000000000000910                SWI_IRQHandler
+                0x0000000000000910                ADC0_IRQHandler
+                0x0000000000000910                UsageFault_Handler
+                0x0000000000000910                I2S0_Tx_IRQHandler
+                0x0000000000000910                SPI1_IRQHandler
+                0x0000000000000910                DMA9_IRQHandler
+                0x0000000000000910                DMA14_IRQHandler
+                0x0000000000000910                CMP1_IRQHandler
+                0x0000000000000910                PORTD_IRQHandler
+                0x0000000000000910                ADC1_IRQHandler
+                0x0000000000000910                PIT2_IRQHandler
+                0x0000000000000910                I2S0_Rx_IRQHandler
+                0x0000000000000910                DMA5_IRQHandler
+                0x0000000000000910                RTC_IRQHandler
+                0x0000000000000910                PDB0_IRQHandler
+                0x0000000000000910                FTM1_IRQHandler
+                0x0000000000000910                PIT3_IRQHandler
+                0x0000000000000910                RTC_Seconds_IRQHandler
+                0x0000000000000910                MCG_IRQHandler
+                0x0000000000000910                UART2_ERR_IRQHandler
+                0x0000000000000910                DMA11_IRQHandler
+                0x0000000000000910                Read_Collision_IRQHandler
+                0x0000000000000910                Default_Handler
+                0x0000000000000910                DMA7_IRQHandler
+                0x0000000000000910                USB0_IRQHandler
+                0x0000000000000910                WDOG_EWM_IRQHandler
+                0x0000000000000910                MemManage_Handler
+                0x0000000000000910                SVC_Handler
+                0x0000000000000910                DMA13_IRQHandler
+                0x0000000000000910                DMA3_IRQHandler
+                0x0000000000000910                RNG_IRQHandler
+                0x0000000000000910                DMA0_IRQHandler
+                0x0000000000000910                LPUART0_IRQHandler
+                0x0000000000000910                DMA15_IRQHandler
+                0x0000000000000910                DAC0_IRQHandler
+                0x0000000000000910                DMA4_IRQHandler
+                0x0000000000000910                PIT1_IRQHandler
+                0x0000000000000910                UART0_ERR_IRQHandler
+                0x0000000000000910                DMA_Error_IRQHandler
+                0x0000000000000910                LVD_LVW_IRQHandler
+                0x0000000000000910                SPI0_IRQHandler
+                0x0000000000000910                FTM0_IRQHandler
+                0x0000000000000910                PORTA_IRQHandler
+                0x0000000000000910                DAC1_IRQHandler
+                0x0000000000000910                MCM_IRQHandler
+                0x0000000000000910                DMA12_IRQHandler
+                0x0000000000000910                FTM3_IRQHandler
+                0x0000000000000910                PORTE_IRQHandler
+                0x0000000000000910                FTM2_IRQHandler
+                0x0000000000000910                LPTMR0_IRQHandler
+                0x0000000000000910                BusFault_Handler
+                0x0000000000000910                DMA8_IRQHandler
+                0x0000000000000910                DMA10_IRQHandler
+                0x0000000000000910                UART1_ERR_IRQHandler
+                0x0000000000000910                UART1_RX_TX_IRQHandler
+                0x0000000000000910                CMP0_IRQHandler
+                0x0000000000000910                DMA6_IRQHandler
+                0x0000000000000910                FTF_IRQHandler
+                0x0000000000000910                DMA1_IRQHandler
+ .text.cosf     0x0000000000000914       0x90 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_cos.o)
+                0x0000000000000914                cosf
+ .text.sinf     0x00000000000009a4       0x94 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_sin.o)
+                0x00000000000009a4                sinf
  .text.__ieee754_rem_pio2f
-                0x000000000000095c      0x29c /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
-                0x000000000000095c                __ieee754_rem_pio2f
+                0x0000000000000a38      0x29c /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
+                0x0000000000000a38                __ieee754_rem_pio2f
  .text.__kernel_cosf
-                0x0000000000000bf8      0x104 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_cos.o)
-                0x0000000000000bf8                __kernel_cosf
+                0x0000000000000cd4      0x104 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_cos.o)
+                0x0000000000000cd4                __kernel_cosf
  .text.__kernel_rem_pio2f
-                0x0000000000000cfc      0x680 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
-                0x0000000000000cfc                __kernel_rem_pio2f
+                0x0000000000000dd8      0x680 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
+                0x0000000000000dd8                __kernel_rem_pio2f
  .text.__kernel_sinf
-                0x000000000000137c       0x90 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_sin.o)
-                0x000000000000137c                __kernel_sinf
- .text.fabsf    0x000000000000140c       0x10 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fabs.o)
-                0x000000000000140c                fabsf
- .text.floorf   0x000000000000141c       0x8c /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_floor.o)
-                0x000000000000141c                floorf
- .text.scalbnf  0x00000000000014a8       0xe4 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
-                0x00000000000014a8                scalbnf
+                0x0000000000001458       0x90 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_sin.o)
+                0x0000000000001458                __kernel_sinf
+ .text.fabsf    0x00000000000014e8       0x10 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_fabs.o)
+                0x00000000000014e8                fabsf
+ .text.floorf   0x00000000000014f8       0x8c /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_floor.o)
+                0x00000000000014f8                floorf
+ .text.scalbnf  0x0000000000001584       0xe4 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-sf_scalbn.o)
+                0x0000000000001584                scalbnf
  *(.rodata*)
- .rodata.a_k    0x000000000000158c       0x2c build/src/fourier_synth.o
- .rodata.b_k    0x00000000000015b8       0x2c build/src/fourier_synth.o
+ .rodata.a_k    0x0000000000001668       0x2c build/src/fourier_synth.o
+ .rodata.b_k    0x0000000000001694       0x2c build/src/fourier_synth.o
  .rodata.npio2_hw
-                0x00000000000015e4       0x80 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
+                0x00000000000016c0       0x80 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
  .rodata.two_over_pi
-                0x0000000000001664      0x318 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
- .rodata.PIo2   0x000000000000197c       0x2c /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
+                0x0000000000001740      0x318 /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-ef_rem_pio2.o)
+ .rodata.PIo2   0x0000000000001a58       0x2c /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
  .rodata.init_jk
-                0x00000000000019a8        0xc /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
+                0x0000000000001a84        0xc /usr/lib/gcc/arm-none-eabi/9.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a(lib_a-kf_rem_pio2.o)
  *(.glue_7)
- .glue_7        0x00000000000019b4        0x0 linker stubs
+ .glue_7        0x0000000000001a90        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x00000000000019b4        0x0 linker stubs
+ .glue_7t       0x0000000000001a90        0x0 linker stubs
  *(.init)
  *(.fini)
-                0x00000000000019b4                . = ALIGN (0x4)
-                0x00000000000019b4                _etext = .
+                0x0000000000001a90                . = ALIGN (0x4)
+                0x0000000000001a90                _etext = .
 
-.vfp11_veneer   0x00000000000019b4        0x0
- .vfp11_veneer  0x00000000000019b4        0x0 linker stubs
+.vfp11_veneer   0x0000000000001a90        0x0
+ .vfp11_veneer  0x0000000000001a90        0x0 linker stubs
 
-.v4_bx          0x00000000000019b4        0x0
- .v4_bx         0x00000000000019b4        0x0 linker stubs
+.v4_bx          0x0000000000001a90        0x0
+ .v4_bx         0x0000000000001a90        0x0 linker stubs
 
-.iplt           0x00000000000019b4        0x0
- .iplt          0x00000000000019b4        0x0 build/src/main.o
+.iplt           0x0000000000001a90        0x0
+ .iplt          0x0000000000001a90        0x0 build/src/main.o
 
-.rel.dyn        0x00000000000019b4        0x0
- .rel.iplt      0x00000000000019b4        0x0 build/src/main.o
+.rel.dyn        0x0000000000001a90        0x0
+ .rel.iplt      0x0000000000001a90        0x0 build/src/main.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM.exidx      0x00000000000019b4        0x0
-                0x00000000000019b4                __exidx_start = .
+.ARM.exidx      0x0000000000001a90        0x0
+                0x0000000000001a90                __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000000000019b4                __exidx_end = .
+                0x0000000000001a90                __exidx_end = .
 
 .eh_frame
  *(.eh_frame)
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
-                0x00000000000019b4                _sidata = LOADADDR (.data)
+                0x0000000000001a90                _sidata = LOADADDR (.data)
 
-.data           0x000000001fff0000        0x4 load address 0x00000000000019b4
+.data           0x000000001fff0000        0x4 load address 0x0000000000001a90
                 0x000000001fff0000                . = ALIGN (0x4)
                 0x000000001fff0000                _sdata = .
  *(.data*)
@@ -419,25 +425,24 @@ END GROUP
  *fill*         0x000000001fff0001        0x3 
                 0x000000001fff0004                _edata = .
 
-.igot.plt       0x000000001fff0004        0x0 load address 0x00000000000019b8
+.igot.plt       0x000000001fff0004        0x0 load address 0x0000000000001a94
  .igot.plt      0x000000001fff0004        0x0 build/src/main.o
 
-.bss            0x000000001fff0004      0x1bc load address 0x00000000000019b8
+.bss            0x000000001fff0004      0x1fc load address 0x0000000000001a94
                 0x000000001fff0004                . = ALIGN (0x4)
                 0x000000001fff0004                _sbss = .
                 0x000000001fff0004                __bss_start__ = _sbss
  *(.bss*)
- .bss.lut       0x000000001fff0004      0x1b8 build/src/fourier_synth.o
+ .bss.lut       0x000000001fff0004      0x1fa build/src/fourier_synth.o
  .bss.sample_idx
-                0x000000001fff01bc        0x2 build/src/fourier_synth.o
+                0x000000001fff01fe        0x2 build/src/fourier_synth.o
  *(COMMON)
-                0x000000001fff01c0                . = ALIGN (0x4)
- *fill*         0x000000001fff01be        0x2 
-                0x000000001fff01c0                _ebss = .
-                0x000000001fff01c0                __bss_end__ = _ebss
-                0x000000001fff01c0                . = ALIGN (0x8)
-                0x000000001fff01c0                _end = .
-                0x000000001fff01c0                end = .
+                0x000000001fff0200                . = ALIGN (0x4)
+                0x000000001fff0200                _ebss = .
+                0x000000001fff0200                __bss_end__ = _ebss
+                0x000000001fff0200                . = ALIGN (0x8)
+                0x000000001fff0200                _end = .
+                0x000000001fff0200                end = .
                 [!provide]                        PROVIDE (__heap_start = _end)
 OUTPUT(build/warbling_wire.elf elf32-littlearm)
 
